@@ -1,0 +1,11 @@
+[Unit]
+Description=Example
+
+[Service]
+Type=oneshot
+User=geoffroy
+Group=geoffroy
+ExecStart=/home/geoffroy/Documents/1_projets_persos/18_easy_scheduler/easy_scheduler/scripts/example.sh
+
+[Install]
+WantedBy=multi-user.target

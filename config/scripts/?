@@ -1,0 +1,38 @@
+#!/bin/bash
+
+# Documentation of commands
+
+echo
+echo Server - Useful commands | GREP_COLOR='01;35' egrep --color=always "Server - Useful commands|"
+echo
+echo "    "update_timers.sh | GREP_COLOR='01;36' egrep --color=always "update_timers.sh|"
+echo
+echo Enable all services and timers present into the following directory:
+echo easy_scheduler/timers
+echo Make sure .service and .timer files are correctly set up
+echo
+echo "    "status_timer.sh  | GREP_COLOR='01;36' egrep --color=always "status_timer.sh|"
+echo
+echo Display information on services and timers status
+echo
+echo "    "print_timer.sh  | GREP_COLOR='01;36' egrep --color=always "print_timer.sh|"
+echo
+echo Display all the scheduled time for each timer
+echo
+echo "    "list_scripts.sh  | GREP_COLOR='01;36' egrep --color=always "list_scripts.sh|"
+echo
+echo Display all the scripts that can be used to manually,
+echo "Copy-paste a script name in the command prompt and press <ENTER>"
+echo
+echo "    journalctl --unit=<service_name>.service -n 100 --no-pager"  | GREP_COLOR='01;36' egrep --color=always "journalctl --unit=|" \
+                        | GREP_COLOR='01;31' egrep --color=always "<service_name>|" | GREP_COLOR='01;36' egrep --color=always ".service -n 100 --no-pager|"
+echo
+echo Display detailled system logs on executed reports
+echo "Replace <service_name> by the name of the service to check"  | GREP_COLOR='01;31' egrep --color=always "<service_name>|"
+echo
+echo "    "upcoming.sh | GREP_COLOR='01;36' egrep --color=always "upcoming.sh|"
+echo
+echo Display a table with all the upcoming script,
+echo "  -> Time Until Next : time between now and next execution of the script"
+echo "  -> Delta To Next   : time between a report and the one that coming next"
+echo

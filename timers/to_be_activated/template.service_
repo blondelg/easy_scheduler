@@ -1,0 +1,11 @@
+[Unit]
+Description=<description>
+
+[Service]
+Type=oneshot
+User=reports
+Group=reports
+ExecStart=/home/reports/onedrive/1_auto_reports/scripts/<script.sh>
+
+[Install]
+WantedBy=multi-user.target
