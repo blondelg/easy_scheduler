@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #def settings
-export HOME_SCRIPTS=../../scripts/
+export HOME_SCRIPTS=$HOME_ES/scripts/
 
 # activate them
 echo

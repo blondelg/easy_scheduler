@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #def settings
-export HOME_TIMER=../../timers/
+export HOME_TIMER=$HOME_ES/timers/
 export HOME_SYSTEMD=/etc/systemd/system/
 
 # desactivate existing timers, drop timers and services files from systemd directory

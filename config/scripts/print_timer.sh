@@ -2,7 +2,7 @@
 
 # activate them
 echo
-for filepath in /etc/systemd/system/*.timer;
+for filepath in $HOME_ES/timers/*.timer;
 do
   filename=$(basename $filepath)
   echo ● $filename  | GREP_COLOR='01;92' egrep --color=always "● "$filename"|"

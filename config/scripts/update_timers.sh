@@ -1,30 +1,31 @@
 #!/bin/bash
 
 #def settings
-export HOME_TIMER=../../timers/
+export HOME_TIMER=$HOME_ES/timers/
 export HOME_SYSTEMD=/etc/systemd/system/
 
 # desactivate existing timers, drop timers and services files from systemd directory
-for filepath_timer in $HOME_SYSTEMD*.timer;
+for filepath_timer in $HOME_TIMER*.timer;
 do
+
+  # set file names
   filename_timer=$(basename "$filepath_timer")
-  filepath_service="${filepath_timer/timer/service}"
-  filename_service=$(basename "$filepath_service")
-  # stop timer
+  filename_service="${filename_timer/timer/service}"
+
+  # stop and disable timer
   sudo systemctl stop $filename_timer
-  # disable timer
   sudo systemctl disable $filename_timer
   echo $filename" stopped and disabled"
-  # remove timer file
-  sudo rm $filepath_timer
-  # remove service file
-  sudo rm $filepath_service
-  echo $filepath_timer " and " $filepath_service " have been deleted from systemd folder"
+
+  # remove timer and service files from systemd directory
+  sudo rm $HOME_SYSTEMD$filename_timer
+  sudo rm $HOME_SYSTEMD$filename_service
+  echo $filename_timer " and " $filename_service " have been deleted from " $HOME_SYSTEMD
+
 done
 
-# Copy new services
+# Copy new services and timers
 sudo cp $HOME_TIMER*.service /etc/systemd/system
-# Copy new timers
 sudo cp $HOME_TIMER*.timer /etc/systemd/system
 
 # Reload files
@@ -36,18 +37,14 @@ do
   filename=$(basename "$filepathname")
 
   TIMERS=$TIMERS$filename"\|"
-  # start timer
+  # start and enable timer
   sudo systemctl start $filename
-  # enable new timer
   sudo systemctl enable $filename
   echo $filename" started and enabled"
-   if [[ $filename == *"onedrive"* ]]; then
-     sudo systemctl enable onedrive_sync.service &
-     sudo systemctl start onedrive_sync.service &
-   fi
+
 done
 
-# TIMERS=" '"$TIMERS"onedrive'"
+TIMERS=" "$TIMERS
 
 # display scheduled
 systemctl list-timers --all | egrep $TIMERS

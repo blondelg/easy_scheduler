@@ -1,5 +1,7 @@
 # easy_scheduler
 Script scheduler and monitoring on Linux Ubuntu server
+Here is a set of scripts and commands that make script
+scheduling and monitoring easier on Linux Ubuntu.
 
 # Python Virtual Environment
 A virtual environment is used  to run a particular script,
@@ -15,4 +17,5 @@ pip install -r config/requirements.txt
 add the folling line at the end of the .bashrc file
 ```console
 export PATH=$PATH:<PATH_TO>/easy_scheduler/config/scripts
+export HOME_ES=<PATH_TO>/easy_scheduler
 ```
