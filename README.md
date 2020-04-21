@@ -27,16 +27,16 @@ source ~/.bashrc
 
 ## Setup first script
 put the script example.sh to be automated here:
-/scripts
+* /scripts
 
 update the corresponding timer and services files,
 see:
-/timers/example.timer
-/timers/example.service
+* /timers/example.timer
+* /timers/example.service
 
 run the following command to implement the scheduling configuration:
 ```console
 update_timers.sh
 ```
 
-to get help on other commands, just type ? in the command prompt.
+to get help on other commands, just type __?__ in the command prompt.
